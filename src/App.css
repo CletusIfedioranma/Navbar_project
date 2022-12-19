@@ -1,38 +1,480 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+:root{
+--background:#fff;
+--Barbackground:rgba(255, 255, 255, 0.95);
+--dark:#048a94;
+--body:#e7eded;
+
+}
+* {
+scroll-behavior: smooth;
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+overflow-x: hidden;
+background: var(--body);
+}
+.parent{
+  width: 100vw;
+  height: 100vh; 
+}
+.hole {
+  position: absolute;
+  border-radius: 100%;
+  left: 550px;
+  top: 230px;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 0 0 99999px rgb(209, 207, 207,.9);
+}
+
+.text{
+  position: absolute;
+  width: 100vw;
+  height: 70vh;
+}
+
+
+
+.card{
+    object-fit: cover;
+    width:100vw;
+    height:70vh;
+    object-position:center;
+    inset:0;
+    display:block;
+    opacity: 1;
+    z-index: 1;
+    transition-duration: 1s;
+    filter: brightness(25%);
+    transition-timing-function: ease-in; 
+}
+
+.textcard{
+  font-family: 'Rubik Microbe', cursive;
+  bottom: 10%;
+    opacity: 1;
+    z-index: 1;
+    transition-duration: 1s;
+    transition-timing-function:ease-out; 
+    transform: translateX(90px);
+}
+.inactive{
+  object-fit: cover;
+  width:100vw;
+  height:70vh;
+  object-position:center;
+  inset:0;
+  display:block;
+  /* filter: brightness(50%); */
+opacity:0;
+transition-delay: 0ms;
+transition-duration: 1s;
+transition-timing-function: ease-in;
+}
+.textinactive{
+opacity:0;
+}
+
+.parentcontainer{
+  position: relative;
+  width: 100vw;
+  height: 70vh; 
+}
+.parentcontainer2{
+  /* background-image:url(images/food1.jpg) ; */
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+.select{
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.select_c{
+  /* border: 2px solid red; */
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ gap: 30px;
+}
+.choice{
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  font-weight: 700;
   text-align: center;
+  font-size: 50px;
+  color: rgb(58, 58, 58);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.choices{
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  letter-spacing:1px;
+  font-weight: 700;
+ 
+  font-size: 13px;
+  color: rgb(58, 58, 58);
 }
+.sel1,.sel2,.sel3,.sel4{
+  font-family: 'Poppins', sans-serif;
+  width: 200px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sel1{
+  border: 1.5px solid rgb(34, 0, 255);
+  background-color: rgb(34, 0, 255,.089);
+  border-radius: 11px;
+}
+.sel2{
+  border: 1.5px solid rgb(255, 132, 0);
+  background-color: rgb(255, 132, 0,.089);
+  border-radius: 11px;
+}
+.sel3{
+  border: 1.5px solid rgb(0, 179, 255);
+  background-color: rgba(0, 179, 255, 0.089);
+  border-radius: 11px;
+}
+.sel4{
+  border: 1.5px solid rgb(255, 0, 212);
+  background-color: rgb(255, 0, 212,.089);
+  border-radius: 11px;
+}
+/* .container{
+    background-image:url(images/food2.jpg);
+    background-size: cover;
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+animation-name: example2;
+animation-duration: 4s;
+animation-delay: 6s;
+animation-fill-mode: forwards;
+}
+@keyframes example2 {
+  0% {opacity:1;}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  100%{opacity:0;}
+  } */
+.box{
+  display: none;
+  position:relative;
+width: 170px;
+height: 170px;
+border-radius: 100%;
+background:var(--dark);
+box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0);
+/* border: 4px solid rgba(0, 0, 0, 0.288); */
+overflow: hidden;
+animation-name: example;
+animation-duration: 5s;
+animation-delay: 2s;
+  /* animation-duration: 1.0s; */
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+@keyframes example {
+  0% {transform: translateY(-600px)}
+  5% {transform: translateY(40px)}
+  10%,13%{transform: translateY(10px)}
+  13%{transform: translateY(40px)}
+  90%{transform: translateY(40px)}
+  95%{transform: translateY(70px)}
+  100%{transform: translateY(-500px)}
+  /* 100%{transform: translateY(0px)} */
   }
+.box::before{
+  content: "FOOD";
+  text-align: center;
+  font-family: 'Rubik Microbe', cursive;
+  color: var(--background);
+  font-size: 50px;
+  font-weight: 300;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.box::after{
+  content: "";
+  position: absolute;
+  height: 200%;
+  width: 200%;
+  bottom: -50%;
+  left: -50%;
+background-color:rgb(255, 255, 255);
+border-radius: 37%;
+animation-delay: 1s;
+animation-name: levi;
+animation-timing-function: ease-in-out;
+animation-duration:7s;
+animation-iteration-count: infinite;
+}
+@keyframes levi {
+0%{
+  transform: translateY(0) rotate(0deg);
+}
+100%{
+  transform: translateY(-100%) rotate(500deg);
+}
+}
+/* HEADER */
+@media(max-width:40rem){
+  .minheader{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    background:var(--Barbackground);
+    
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  }
+  .extended{
+  width: 300px;
+  height: 700px;
+  background: var(--background);
+  border:none;
+  outline: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+
+.de_1,.de_2{
+  margin-top: 10px;
+  background: var(--background);
+  outline: none;
+  padding: 0;
+  position: relative;
+  display: flex;
+  /* flex-direction: column; */
+  border-radius: 10px;
+  align-items: center;
+  height:35px;
+  width: 90%;
+  cursor:pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.de_1,.de_2:hover{
+
+  background: var(--body);
+
+}
+.d1,.d2{
+  margin-left: 10px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  font-size: 15px;
+  display: flex;
+  cursor:pointer;
+}
+.e_m1{
+  height: 150px;
+  background: var(--background);
+  width: 80%;height: fit-content;
+}
+.e_m2{
+  height: 200px;
+  background: var(--background);
+  width: 80%;
+  height: fit-content;
+}
+.kad_1,.cri_1,.kad_2,.cri_2{
+position: absolute;
+right: 0;
+font-weight:100;
+}
+}
+@media(min-width:40rem){
+  .minheader{display: none;}
+  .d1,.d2,.de_1,.de_2,.kad_1,.cri_1,.kad_2,.cri_2,.e_m2,.e_m1{
+    display: none;
+  }
+}
+.maxheader{
+  height: 35px;
+  /* display:; */
+  display: flex;
+  align-items: center;
+  background:var(--background);
+  
+
+}
+.d_1,.d_2{
+  
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  font-size: 15px;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  cursor:pointer;
+}
+@media(max-width:40rem){
+ 
+  .maxheader{display: none;}
+}
+.b_tr{
+  position: relative;
+
+}
+.r-h{
+  margin-top: 10px;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-left: 100px; */
+  background-color: var(--background);
+  box-shadow:0 0px 10px rgba(151, 150, 150, 0.509);
+  position: absolute;
+  z-index: 2;
+  border-radius: 8px;
+}
+.r-hs{
+  margin-top: 10px;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-left: 1px; */
+  background-color: var(--background);
+  box-shadow:0 0px 10px rgba(151, 150, 150, 0.509);
+  position: absolute;
+  z-index: 2;
+  border-radius: 8px;
+}
+/* HEADER */
+/* DROPDOWN */
+a{
+  text-decoration: none;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  font-size: 15px;
+  font-weight:700;
+  /* border: 2px solid red; */
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.li{
+  position: relative;
+  margin-top: 10px;
+  background: var(--background);
+  outline: none;
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+/* border: 2px solid red; */
+  /* flex-direction: column; */
+  border-radius: 10px;
+  align-items: center;
+  height:35px;
+  width: 95%;
+  cursor:pointer;
+}
+.ka_1,.cr_1,.ka_2,.cr_2{
+  position: absolute;
+  right: 0;
+  font-weight:100;
+  }
+/* DROPDOWN */
+/* RECIPE */
+
+.r-s1{
+  width: 1240px;
+  margin: 300px auto;
+  columns: 4;
+  column-gap: 10px;
+  
+  
+}
+.r-s1c{
+display: flex;
+flex-direction: column;
+  
+}
+.pizza{
+  margin-bottom: -200px;
+  margin-top: 200px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.pizzas{
+  margin-bottom: -200px;
+  margin-top: 200px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1.5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* RECIPE */
+
+
+/* PIZZA SECTION*/
+.p-a{
+  object-fit: cover;
+  width: 300px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 2%;
+  
+
 }
+.p-ac{
+cursor: pointer;
+}
+.p-ac:hover{
+  filter: brightness(50%);
+}
+.i-rp{
+  object-fit: cover;
+  width: 700px;
+  height:500px;
+   border-radius: 1.5%;
+ filter: brightness(90%);
+}
+.i-rpc{
+  
+ width: 700px;
+ height:500px;
+}
+.i-rpcp{
+  
+ height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+.b_tr{
+
+}
+
+/* PIZZA */
